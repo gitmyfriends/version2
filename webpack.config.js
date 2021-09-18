@@ -66,6 +66,7 @@ module.exports = {
     },
     proxy: {
       '/github' : 'http://localhost:3000/',
+      '/main/**' : 'http://localhost:3000/',
     },
     compress: true,
     port: 8080,
