@@ -1,0 +1,47 @@
+/* default styles */
+$Josefin: 'Josefin', sans-serif;
+$Alfa: 'Alfa Slab One';
+$Lato: 'Lato', sans-serif;
+$Fran: 'Francois One', sans-serif;
+
+$berry: rgb(41, 5, 33);
+$light-blue: #d2daf4;
+// $purple: #d5b9e9;
+$purple: #dccae8;
+
+$shadow-color: rgba(233, 62, 219, 0.915);
+
+header{
+  font-family: $Alfa;
+}
+
+body{
+  background: $light-blue;
+  font-family: $Lato;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.myCard{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 500px;
+  color: $berry;
+  background: $purple;
+  font-size: large;
+  font-family: $Josefin;
+  padding: 1rem;
+  border: 3px solid rgb(125, 43, 130);
+  box-shadow: 3px 3px 3px 3px $shadow-color;
+}
+img{
+  border: 1px solid rgb(125, 43, 130);
+}
+.searchBar{ 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
