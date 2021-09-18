@@ -20,11 +20,11 @@ class SearchBar extends Component {
       // </div>
 
     <form action='/main/getFriend' method='get' className='searchBar'> 
-      <label for='name'>Add New Friends</label>
+      <label htmlFor='name'>Add New Friends</label>
       <br/>
       <input type='text' id='name' name='name' placeholder='Type in a name' />
       <br/>
-      <button type="submit" class="btn btn-outline-info">Find</button>
+      <button type="submit" className="btn btn-outline-info">Find</button>
     </form> 
     )
   }
