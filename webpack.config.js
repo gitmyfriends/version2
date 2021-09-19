@@ -28,9 +28,21 @@ module.exports = {
   },
 
   mode: process.env.NODE_ENV, 
+  //8080 server
+  devServer: {
+    static: {
+      directory: path.join(__dirname, '/'),
+        // publicPath: '/build'
+    },
+    proxy: {
+      '/github' : 'http://localhost:3000/',
+    },
+    compress: true,
+    port: 8080,
+  },
 
-  plugins: 
-    [].concat(process.env.NODE_ENV === 'production' ? [new MiniCssExtractPlugin()] : []),
+  // plugins: 
+  //   [].concat(process.env.NODE_ENV === 'production' ? [new MiniCssExtractPlugin()] : []),
   //   [new HtmlWebpackPlugin({
   //     template: "index.html",
   //     chunks: ['main']
@@ -40,7 +52,7 @@ module.exports = {
 
   module: {
     rules: [{
-      test: /\.jsx?/,
+      test: /.(js|jsx)$/,
       exclude: /(node_modules)/,
       use: {
         loader: 'babel-loader',
@@ -52,22 +64,15 @@ module.exports = {
     {
       test: /\.(sa|sc|c)ss$/, 
       use: [
-        process.env.NODE_ENV === 'production' ? MiniCssExtractPlugin.loader : 'style-loader', 
+        'style-loader', 
         'css-loader', 'sass-loader'],
     }
   ],
   },
-
-  //8080 server
-  devServer: {
-    static: {
-      directory: path.join(__dirname, '/'),
-      // publicPath: '/build'
-    },
-    proxy: {
-      '/github' : 'http://localhost:3000/',
-    },
-    compress: true,
-    port: 8080,
+  resolve: {
+    // Enable importing JS / JSX files without specifying their extension
+    extensions: ['.js', '.jsx'],
   },
+
+
 }

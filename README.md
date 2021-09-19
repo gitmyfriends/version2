@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Back End
 1. Session 
 --Option: Use passport to store session cookie,
@@ -93,7 +92,3 @@ Without Oauth
 1. Work off of new copies of Janilya's working dev
 2. Develop the dashboard page 
 ---Use localhost 3000 server to render cohort profiles and charts
----
-=======
-READ ME
->>>>>>> 9e18e976730f9278f9b898cf71f8f0dc43602850
