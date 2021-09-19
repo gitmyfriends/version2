@@ -29,17 +29,7 @@ module.exports = {
 
   mode: process.env.NODE_ENV, 
   //8080 server
-  devServer: {
-    static: {
-      directory: path.join(__dirname, '/'),
-        // publicPath: '/build'
-    },
-    proxy: {
-      '/github' : 'http://localhost:3000/',
-    },
-    compress: true,
-    port: 8080,
-  },
+  
 
   // plugins: 
   //   [].concat(process.env.NODE_ENV === 'production' ? [new MiniCssExtractPlugin()] : []),
@@ -57,7 +47,8 @@ module.exports = {
       use: {
         loader: 'babel-loader',
         options: {
-          presets: ['@babel/preset-env', '@babel/preset-react']
+          presets: ['@babel/preset-env', '@babel/preset-react'],
+          plugins: ["@babel/plugin-transform-runtime"],
         }
       }
     },
@@ -69,7 +60,9 @@ module.exports = {
     }
   ],
   },
-
+  
+   
+  
 
   //8080 server
   devServer: {
@@ -79,11 +72,11 @@ module.exports = {
     },
     proxy: {
       '/github' : 'http://localhost:3000/',
-      '/main/**' : 'http://localhost:3000/',
+      '/main/*' : 'http://localhost:3000/',
     },
     compress: true,
     port: 8080,
-
+  },
   resolve: {
     // Enable importing JS / JSX files without specifying their extension
     extensions: ['.js', '.jsx'],

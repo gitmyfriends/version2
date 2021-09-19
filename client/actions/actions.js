@@ -5,9 +5,9 @@ import { ADD_PROFILE, DELETE_PROFILE } from './constants/actionTypes.js';
 //   payload: ''
 // })
 
-export const addProfile = (name) => ({
+export const addProfile = (profileObj) => ({
   type: ADD_PROFILE,
-  payload: name
+  payload: profileObj
 })
 
 export const deleteProfile = (name) => ({

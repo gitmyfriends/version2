@@ -18,7 +18,7 @@ const ProfileCard = props => {
   const { profileInfo, deleteProfile } = props;
   return(
     <div className='profileCard'>
-      <img src={profileInfo.avatar_url} width="200" height="200" />
+      <center><img src={profileInfo.avatar_url} width="100" height="100" /></center>
       <br/>
       <p><strong>Name: </strong>{profileInfo.name}</p>
       <p><strong>Company: </strong>{profileInfo.company}</p>          
@@ -26,7 +26,7 @@ const ProfileCard = props => {
       <p><strong>Bio: </strong>{profileInfo.bio}</p>
       <p><strong>Email: </strong>{profileInfo.email}</p>
       <p><strong>Public Repos: </strong>{profileInfo.public_repos}</p>
-      <p><strong>URL:</strong><a href={profileInfo.url}>{profileInfo.url}</a></p>
+      {/* <p><strong>URL:</strong><a href={profileInfo.url}>{profileInfo.url}</a></p> */}
     </div>
   )
 }

@@ -10,38 +10,77 @@ $light-blue: #d2daf4;
 $purple: #dccae8;
 
 $shadow-color: rgba(233, 62, 219, 0.915);
-
 header{
   font-family: $Alfa;
 }
 
-body{
-  background: $light-blue;
-  font-family: $Lato;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+* {
 }
 
-.myCard{
+body{
+  padding-top:10px;
+  background: $light-blue;
+  font-family: $Lato;
+  //display: flex;
+  //flex-direction: column;
+  //align-items: center;
+}
+
+.mainContainer{
+  // border: 2px solid red;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 500px;
+}
+.outerBox {
+  width: 100%;
+  margin: 0 auto;
+  padding: 10px;
+  // box-shadow: 10px 15px 39px rgba(0, 0, 0, .2);
+  border-radius: 5px;
+  // border: 2px solid yellow;
+}
+
+.profileContainer{
+  display:flex;
+  padding: 10px;
+  width:1150px;
+  height: 1000px;
+  margin: 15px auto;
+  // box-shadow: 5px 5px 15px rgba(0, 0, 0, .2);
+  // border: 2px solid black;
+}
+
+// .profileDisplay{
+//   overflow: auto;
+//   padding-top:10px;
+//   height: 100%;
+//   // border: 2px solid blue;
+// }
+
+.profileCard{
+  //display: flex;
+  //flex-direction: column;
+  //align-items: center;
+  float:left;
+  width:200px;
+  height:600px;
   color: $berry;
   background: $purple;
-  font-size: large;
+  font-size: 1vw;
   font-family: $Josefin;
   padding: 1rem;
   border: 3px solid rgb(125, 43, 130);
   box-shadow: 3px 3px 3px 3px $shadow-color;
+  img{
+    border: 1px solid rgb(125, 43, 130);
+  }
+  margin: 10px 10px 10px 10px;
+  justify-content: center;
+
 }
-img{
-  border: 1px solid rgb(125, 43, 130);
-}
+
 .searchBar{ 
   display: flex;
+  width: 300px;
   flex-direction: column;
-  align-items: center;
-  padding: 2rem;
+  padding-top:40px;
 }
