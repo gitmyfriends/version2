@@ -1,14 +1,16 @@
 import React from 'react';
-import { render } from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import App from './components/App.jsx';
+import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'; 
+import App from './App.jsx';
+import store from './store.js';
 
 // uncomment so that webpack can bundle styles
 import styles from './styles/stylesheet.scss';
 
 
-render(
-  <App />,
-   document.getElementById('root'),
-
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('contents')
 );
