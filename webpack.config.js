@@ -69,9 +69,25 @@ module.exports = {
     }
   ],
   },
+
+
+  //8080 server
+  devServer: {
+    static: {
+      directory: path.join(__dirname, '/'),
+      // publicPath: '/build'
+    },
+    proxy: {
+      '/github' : 'http://localhost:3000/',
+      '/main/**' : 'http://localhost:3000/',
+    },
+    compress: true,
+    port: 8080,
+
   resolve: {
     // Enable importing JS / JSX files without specifying their extension
     extensions: ['.js', '.jsx'],
+  
   },
 
 
