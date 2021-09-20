@@ -15,7 +15,8 @@ import * as types from '../actions/constants/actionTypes.js';
 
 const initialState = {
   profileList: [],
-  totalProfiles: 0
+  totalProfiles: 0,
+  displayCard: null
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -23,48 +24,41 @@ const profileReducer = (state = initialState, action) => {
   switch (action.type) {
 
     case types.ADD_PROFILE:{
-      console.log("did you get object", action.payload)
+    console.log("did you get object", action.payload)
     const profileList = state.profileList.slice();
     profileList.push(action.payload);
     const totalProfiles = state.totalProfiles+1;
+    let displayCard = state.displayCard;
+    displayCard = null;
     return {
+      displayCard,
       profileList, 
       totalProfiles:totalProfiles,
+      
     };
   }
+    case types.DISPLAY_PROFILE:{
+    console.log("hello")
+    console.log(action.payload)
+    console.log({...state})
+    return{
+      ...state,
+      displayCard:action.payload,
       
-      
-      console.log("your payload", action.payload);
-        
-      // console.log("do you still have newProfile", newProfile);
-      
-    //  fetch('main/getFriend/', {
-    //     method: 'POST',
-    //     body: JSON.stringify(nameObj),
-    //     headers: { 'Content-Type': 'application/json' },
-    //   }
-    // )
-    //   .then(res=>res.json())
-    //   .then(object =>{
-    //     console.log("hello",object)
-    //     newProfile = object; 
-    //   })
-    //   .catch(err=>console.log(err));
-      
-      // console.log("do you still have newProfile", newProfile);
-      // const profileList = state.profileList.slice();
-      // profileList.push(newProfile);
-      // const totalProfiles = state.totalProfiles+1;
-      // return {
-      //   profileList, 
-      //   totalProfiles:totalProfiles,
-      // };
+    }
+    }
     
     case types.DELETE_PROFILE:{
-      break;
+      
     }
-        
 
+    case types.ADD_LIST:{
+      const profileList = action.payload;
+      return {
+        ...state,
+        profileList
+      }
+    }
 
     default: {
       return state;

@@ -1,21 +1,11 @@
 import React, { Component } from "react";
 import fetch from 'isomorphic-fetch';
 
-// login: 'jlhline',
-// avatar_url: 'https://avatars.githubusercontent.com/u/80792840?v=4',
-// url: 'https://api.github.com/users/jlhline',
-// name: null,
-// company: null,
-// location: null,
-// email: null,
-//  bio: null,
-// public_repos: 4,
-// followers: 1,
-// following: 0,
-// created_at: '2021-03-16T22:01:18Z',
-
 const ProfileCard = props => {
   const { profileInfo, deleteProfile } = props;
+  const deleteProfile = () => {
+    deleteProfile(displayCard)
+  };
   return(
     <div className='profileCard'>
       <center><img src={profileInfo.avatar_url} width="100" height="100" /></center>
@@ -26,7 +16,7 @@ const ProfileCard = props => {
       <p><strong>Bio: </strong>{profileInfo.bio}</p>
       <p><strong>Email: </strong>{profileInfo.email}</p>
       <p><strong>Public Repos: </strong>{profileInfo.public_repos}</p>
-      {/* <p><strong>URL:</strong><a href={profileInfo.url}>{profileInfo.url}</a></p> */}
+      <center><button onClick={deleteProfile}>Delete Card</button></center>
     </div>
   )
 }

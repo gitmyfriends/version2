@@ -16,9 +16,14 @@ const sessionSchema = new Schema({
   createdAt: { type: Date, expires: 3600, default: Date.now }
 });
 
+const userSchema = new Schema({
+  login:  { type: String, required: true, unique: true },
+});
+
 const Session = mongoose.model('session', sessionSchema);
+const User = mongoose.model('user', userSchema);
 
 module.exports = {
   Session,
-
+  User
 }

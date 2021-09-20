@@ -2,6 +2,7 @@
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 const fs = require('fs');
 const path = require('path');
+const { nextTick } = require('process');
 
 const mainController = {
   async fetchSelf(req, res, next) {
@@ -30,6 +31,26 @@ const mainController = {
       return next(err);
     }
   },
+
+  async fetchAFriend(req, res, next) {
+    const {username} = req.params;
+    let {allUsers} = res.locals;
+    console.log("allusers", allUsers);
+    allUsers = new Set(allUsers);
+
+    try {
+      if (allUsers.has(username)) {
+        res.locals.newProfile = {rejectQuery:'This person is already your friend.'}
+        return next();
+      } 
+      const fetRes = await fetch(`https://api.github.com/users/${username}`);
+      const newUser = await fetRes.json();
+      res.locals.newProfile = newUser;
+      return next();
+    } catch(err) {
+      return next(err);
+    }
+  }
 }
 
 module.exports = mainController;
