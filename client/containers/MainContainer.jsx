@@ -13,7 +13,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   addProfile: (profileObj) => dispatch(actions.addProfile(profileObj)),
-  deleteProfile: (name) => dispatch(actions.deleteProfile(modelNames)),
+  deleteProfile: (index) => {dispatch(actions.deleteProfile(index))},
   displayProfile: (profileObj) => dispatch(actions.displayProfile(profileObj)),
   addList: (array) => dispatch(actions.addList(array)),
 });

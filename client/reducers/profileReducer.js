@@ -49,7 +49,15 @@ const profileReducer = (state = initialState, action) => {
     }
     
     case types.DELETE_PROFILE:{
-      
+     
+      const profileList = state.profileList.slice();
+      console.log("before splice",action.payload,profileList)
+      profileList.splice(action.payload,1)
+      console.log("after Splice",profileList)
+      return {
+        ...state,
+        profileList
+      }
     }
 
     case types.ADD_LIST:{
