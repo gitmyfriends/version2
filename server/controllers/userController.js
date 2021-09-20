@@ -5,7 +5,7 @@ const userController = {
   async getAllUsers(req, res, next) {   
     try {
       //returns an array of objects [{id, login}]
-      const data = await User.find({}, 'login').exec();
+      const data = await User.find({}).exec();
       //map to an array of just logins
       const usernames = data.map( user => {
         const {login} = user;
@@ -31,7 +31,7 @@ const userController = {
     const newUser = await fetRes.json();
     res.locals.newProfile = newUser;
 
-    User.create(newUser, (err, data) =>{
+    User.create({login: newUser.login}, (err, data) =>{
       if(err) return next(err);
       return next();
     })

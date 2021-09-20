@@ -13,17 +13,17 @@ mongoose.connect(MONGO_URI, {
 const userSchema = new Schema({
 
     login:  { type: String, required: true, unique: true },
-    avatar_url: { type: String, required: false, unique: false },
-    url: { type: String, required: false, unique: false },
-    name: { type: String, required: false, unique: false },
-    company: { type: String, required: false, unique: false },
-    location: { type: String, required: false, unique: false },
-    email: { type: String, required: false, unique: false },
-    bio: { type: String, required: false, unique: false },
-    public_repos: { type: Number, required: false, unique: false },
-    followers:  { type: Number, required: false, unique: false },
-    following:  { type: Number, required: false, unique: false },
-    created_at: { type: String, required: false, unique: false },
+    // avatar_url: { type: String, required: false, unique: false },
+    // url: { type: String, required: false, unique: false },
+    // name: { type: String, required: false, unique: false },
+    // company: { type: String, required: false, unique: false },
+    // location: { type: String, required: false, unique: false },
+    // email: { type: String, required: false, unique: false },
+    // bio: { type: String, required: false, unique: false },
+    // public_repos: { type: Number, required: false, unique: false },
+    // followers:  { type: Number, required: false, unique: false },
+    // following:  { type: Number, required: false, unique: false },
+    // created_at: { type: String, required: false, unique: false },
 });
 
 const User = mongoose.model('user', userSchema);
