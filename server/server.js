@@ -3,10 +3,10 @@ const path = require('path');
 const app = express();
 
 const cors = require('cors');
-const { checkSession } = require('./controllers/ghController');
+const { checkSession } = require('./controllers/oauthController');
 
 //Require in all the routers
-const ghRouter = require('./routes/githubRouter');
+const oauthRouter = require('./routes/oauthRouter');
 const mainRouter = require('./routes/mainRouter');
 
 //Automatically parse urlencoded body content from incoming requests and place it in req.body
@@ -37,7 +37,7 @@ app.all('/*', function(req, res, next) {
 
 
 //At a given path, use the following routers
-app.use('/github', ghRouter);
+app.use('/github', oauthRouter);
 app.use('/main', mainRouter);
 
 // if (process.env.NODE_ENV === 'production') {

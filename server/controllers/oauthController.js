@@ -6,7 +6,7 @@ const { Session } = require('../models/gmfModel');
 const { CLIENT_ID, CLIENT_SECRET } = require('../clientInfo.js');
 
 //Controller object with methods 
-const ghController = {
+const oauthController = {
 
   async connectToGitHub(req, res, next) {
     const url = `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}`;
@@ -85,4 +85,4 @@ const ghController = {
   // }
 };
 
-module.exports = ghController;
+module.exports = oauthController;

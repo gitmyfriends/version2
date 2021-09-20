@@ -1,6 +1,6 @@
 // const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 const express = require('express');
-const { getToken, startSession, connectToGitHub } = require('../controllers/ghController');
+const { getToken, startSession, connectToGitHub } = require('../controllers/oauthController');
 const router = express.Router();
 const { CLIENT_ID } = require('../clientInfo.js');
 
