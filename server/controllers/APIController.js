@@ -30,7 +30,6 @@ const mainController = {
       return next(err);
     }
   },
-
 }
 
 module.exports = mainController;

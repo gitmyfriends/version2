@@ -23,14 +23,9 @@ const oauthController = {
     const { code } = req.query;
     console.log("CODE IN GET TOKEN", code);
     const url = `https://github.com/login/oauth/access_token?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&code=${code}`;
-    // Encode with base64
-    // const plainCredential = CLIENT_ID + ":" + CLIENT_SECRET;
-    // encodedCredential = Buffer.from(plainCredential).toString('base64');
-    // authorizationField = "Basic " + encodedCredential;
     const initObj = {
       method: 'POST', 
       headers: {
-      // 'Authorization' : authorizationField,
       'Content-type': 'application/json',
       'Accept': 'application/json',
     }};

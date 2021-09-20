@@ -15,20 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(cors());
-// const corsOpts = {
-//   origin: '*',
 
-//   // methods: [
-//   //   'GET',
-//   //   'POST',
-//   // ],
-
-//   // allowedHeaders: [
-//   //   'Content-Type',
-//   // ],
-// };
-
-// app.use(cors(corsOpts));
 app.all('/*', function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "X-Requested-With");

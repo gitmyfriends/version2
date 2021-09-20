@@ -17,7 +17,7 @@ const userController = {
       return next(err);
     }
   },
-
+  
   async createUser(req,res,next){
     const username = req.params.username;
     let {allUsers} = res.locals;
