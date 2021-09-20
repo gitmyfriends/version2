@@ -3,19 +3,22 @@ import { connect } from 'react-redux';
 import ProfileContainer from './ProfileContainer.jsx';
 // import TotalsDisplay from '../components/TotalsDisplay.jsx';
 import ProfileAdder from '../components/ProfileAdder.jsx';
+import Login from '../components/Login.jsx';
 
 import * as actions from '../actions/actions.js';
 
 const mapStateToProps = state => ({
   totalProfiles: state.profiles.totalProfiles,
-  displayCard: state.profiles.displayCard
+  displayCard: state.profiles.displayCard,
+  loggedIn: state.profiles.loggedIn, 
 });
 
 const mapDispatchToProps = dispatch => ({
   addProfile: (profileObj) => dispatch(actions.addProfile(profileObj)),
-  deleteProfile: (name) => dispatch(actions.deleteProfile(modelNames)),
   displayProfile: (profileObj) => dispatch(actions.displayProfile(profileObj)),
-  addList: (array) => dispatch(actions.addList(array)),
+  loginUser: () => dispatch(actions.loginUser())
+  // deleteProfile: (name) => dispatch(actions.deleteProfile(modelNames)),
+  // addList: (array) => dispatch(actions.addList(array)),
 });
 
 
@@ -24,23 +27,41 @@ class MainContainer extends Component {
     super(props);
     console.log(props)
   }
-  componentDidMount() {
-    fetch('/main/homepage')
-      .then(res => res.json())
-      .then((array) => this.props.addList(array))
-  }
+
+  // componentDidUpdate(){
+  //   fetch('/github/checkSession')
+  //     .then(res => res.json())
+  //     // .then(data => console.log("BOOLEAN FOR SESSION", data))
+  //     .then(data => {
+  //       if (data) this.props.loginUser()
+  //     })
+  //     .catch(err => console.log(err))
+  // }
+
   render() {
-    const {totalProfiles, addProfile, deleteProfile,displayCard,displayProfile} = this.props;
+    // await fetch('/github/checkSession')
+    //   .then(res => res.json())
+    //   // .then(data => console.log("BOOLEAN FOR SESSION", data))
+    //   .then(data => {
+    //     if (data) this.props.loginUser()
+    // })
+    //   .catch(err => console.log(err))
+
+    const {totalProfiles, addProfile,displayCard,displayProfile, loggedIn} = this.props;
     console.log(this.props);
-    return (
-      <div className='mainContainer'>
-        <div className='outerBox'>
-          {/* <TotalsDisplay totalProfiles={totalProfiles}/> */}
-          <ProfileAdder displayCard={displayCard} displayProfile={displayProfile} addProfile={addProfile}/>
-          <ProfileContainer deleteProfile={deleteProfile}/>
+    if (!loggedIn) {
+      return <Login loggedIn={loggedIn}/>
+    } else {
+      return (
+        <div className='mainContainer'>
+          <div className='outerBox'>
+            {/* <TotalsDisplay totalProfiles={totalProfiles}/> */}
+            <ProfileAdder displayCard={displayCard} displayProfile={displayProfile} addProfile={addProfile}/>
+            <ProfileContainer />
+          </div>
         </div>
-      </div>
-    )
+      )
+    }
   }
 }
 

@@ -20,6 +20,7 @@ const oauthController = {
 
   async getToken(req, res, next) {
     // res.header("Access-Control-Allow-Origin", '*'); 
+    console.log("token reached")
     const { code } = req.query;
     console.log("CODE IN GET TOKEN", code);
     const url = `https://github.com/login/oauth/access_token?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&code=${code}`;
@@ -49,7 +50,8 @@ const oauthController = {
     fs.writeFileSync(path.resolve(__dirname, '../data/token.json'), JSON.stringify(token));
     Session.create({token}, (err, data) => {
       if (err) return next(err);
-      else return next();
+      console.log(data);
+      return next();
     })
   },
 
@@ -64,13 +66,13 @@ const oauthController = {
     // if (Session.findOne({token})) return next();
     // else return res.redirect(500, '/login');
     // req.cookies.token;
-    if (Object.keys(token).length === 0) return res.redirect('/login');
+    if (Object.keys(token).length === 0) return res.locals.loggedIn = false;
 
     Session.findOne({token}, (err, data) => {
       if (err) return next(err);
-      else if (data === null) return res.redirect('/login');
-      // res.locals.session = data;
-      return next();
+      else if (data === null) return res.locals.loggedIn = false;
+      res.locals.loggedIn = true;
+      return res.status(200).json(res.locals.loggedIn);
     })
   
   },

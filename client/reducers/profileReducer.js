@@ -16,7 +16,8 @@ import * as types from '../actions/constants/actionTypes.js';
 const initialState = {
   profileList: [],
   totalProfiles: 0,
-  displayCard: null
+  displayCard: null,
+  loggedIn: false
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -60,6 +61,15 @@ const profileReducer = (state = initialState, action) => {
       }
     }
 
+    case types.LOGIN_USER: {
+      let loggedIn = state.loggedIn;
+      loggedIn = true;
+      return {
+        ...state, 
+        loggedIn
+      }
+
+    }
     default: {
       return state;
     }

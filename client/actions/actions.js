@@ -1,4 +1,4 @@
-import { ADD_PROFILE, DELETE_PROFILE, DISPLAY_PROFILE, ADD_LIST } from './constants/actionTypes.js';
+import { ADD_PROFILE, DELETE_PROFILE, DISPLAY_PROFILE, ADD_LIST, LOGIN_USER } from './constants/actionTypes.js';
 
 export const displayProfile = (profileObj) => ({
    type: DISPLAY_PROFILE,
@@ -20,3 +20,6 @@ export const addList = (array) => ({
   payload: array
 })
 
+export const loginUser = () => ({
+  type: LOGIN_USER, 
+})

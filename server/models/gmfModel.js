@@ -13,7 +13,7 @@ mongoose.connect(MONGO_URI, {
 
 const sessionSchema = new Schema({
   token: { type: String, required: true, unique: true },
-  createdAt: { type: Date, expires: 3600, default: Date.now }
+  // createdAt: { type: Date, expires: 3600, default: Date.now }
 });
 
 const userSchema = new Schema({

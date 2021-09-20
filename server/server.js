@@ -35,18 +35,19 @@ app.use('/main', mainRouter);
 
 
   // serve index.html on the route '/'
-  app.get('/', checkSession, (req, res) => {
+  app.get('/', checkSession,(req, res) => {
     console.log(req.params);
     console.log('did i go here?')
+    return res.status(200);
     // if (!res.locals.session) return res.redirect('/login');
     // const {loggedIn} = req.query;
-    return res.status(200).sendFile(path.join(__dirname, '../index.html'));
+    //return res.status(200).sendFile(path.join(__dirname, '../index.html'));
   });
 // };
 
-app.get('/login', (req, res) => {
-  return res.status(200).sendFile(path.join(__dirname, '../login.html'));
-})
+// app.get('/login', (req, res) => {
+//   return res.status(200).sendFile(path.join(__dirname, '../login.html'));
+// })
 
 
 

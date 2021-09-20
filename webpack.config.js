@@ -71,7 +71,7 @@ module.exports = {
       // publicPath: '/build'
     },
     proxy: {
-      '/github' : 'http://localhost:3000/',
+      '/github/*' : 'http://localhost:3000/',
       '/main/*' : 'http://localhost:3000/',
     },
     compress: true,
