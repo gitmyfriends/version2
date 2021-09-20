@@ -28,9 +28,11 @@ module.exports = {
   },
 
   mode: process.env.NODE_ENV, 
+  //8080 server
+  
 
-  plugins: 
-    [].concat(process.env.NODE_ENV === 'production' ? [new MiniCssExtractPlugin()] : []),
+  // plugins: 
+  //   [].concat(process.env.NODE_ENV === 'production' ? [new MiniCssExtractPlugin()] : []),
   //   [new HtmlWebpackPlugin({
   //     template: "index.html",
   //     chunks: ['main']
@@ -40,23 +42,27 @@ module.exports = {
 
   module: {
     rules: [{
-      test: /\.jsx?/,
+      test: /.(js|jsx)$/,
       exclude: /(node_modules)/,
       use: {
         loader: 'babel-loader',
         options: {
-          presets: ['@babel/preset-env', '@babel/preset-react']
+          presets: ['@babel/preset-env', '@babel/preset-react'],
+          plugins: ["@babel/plugin-transform-runtime"],
         }
       }
     },
     {
       test: /\.(sa|sc|c)ss$/, 
       use: [
-        process.env.NODE_ENV === 'production' ? MiniCssExtractPlugin.loader : 'style-loader', 
+        'style-loader', 
         'css-loader', 'sass-loader'],
     }
   ],
   },
+  
+   
+  
 
   //8080 server
   devServer: {
@@ -66,8 +72,16 @@ module.exports = {
     },
     proxy: {
       '/github' : 'http://localhost:3000/',
+      '/main/*' : 'http://localhost:3000/',
     },
     compress: true,
     port: 8080,
   },
+  resolve: {
+    // Enable importing JS / JSX files without specifying their extension
+    extensions: ['.js', '.jsx'],
+  
+  },
+
+
 }
