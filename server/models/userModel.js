@@ -19,7 +19,7 @@ const userSchema = new Schema({
     company: { type: String, required: false, unique: false },
     location: { type: String, required: false, unique: false },
     email: { type: String, required: false, unique: false },
-     bio: { type: String, required: false, unique: false },
+    bio: { type: String, required: false, unique: false },
     public_repos: { type: Number, required: false, unique: false },
     followers:  { type: Number, required: false, unique: false },
     following:  { type: Number, required: false, unique: false },
