@@ -25,7 +25,7 @@ const mainController = {
       const responses = await Promise.all(requests);
       const data = await Promise.all(responses.map(res => res.json()));
       res.locals.friendsProfiles = [...data];
-      // console.log(res.locals.profiles);
+      console.log(res.locals.profiles);
       return next();
     } catch(err) {
       return next(err);

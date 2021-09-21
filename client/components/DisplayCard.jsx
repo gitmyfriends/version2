@@ -7,10 +7,8 @@ const DisplayCard = props => {
         headers: { 'Content-Type': 'application/json' },
       })
       .then(() => {
-        
         addProfile(displayCard)
       })
-      
     };
     
     if (displayCard) {
@@ -31,7 +29,7 @@ const DisplayCard = props => {
             <p><strong>Bio: </strong>{displayCard.bio}</p>
             <p><strong>Email: </strong>{displayCard.email}</p>
             <p><strong>Public Repos: </strong>{displayCard.public_repos}</p>
-            <center><button onClick={newProfile}>Add Card</button></center>
+            <center><button type="button" margin="5px 5px 5px 5px" onClick={newProfile} className="btn btn-outline-info">Add Card</button></center>
           </div>
         )
       }

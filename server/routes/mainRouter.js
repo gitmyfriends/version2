@@ -1,6 +1,6 @@
 const express = require('express');
 const { fetchSelf, fetchFriends, fetchAFriend } = require('../controllers/APIController');
-const { getAllUsers, createUser} = require('../controllers/userController');
+const { getAllUsers, createUser, deleteUser} = require('../controllers/userController');
 const router = express.Router();
 
 
@@ -31,6 +31,14 @@ router.get('/getFriend/:username', getAllUsers, fetchAFriend, (req, res) => {
 });
 
 router.get('/addFriend/:username', createUser, (req, res) => {
+  res.set("Access-Control-Allow-Origin", '*'); // update to match the domain you will make the request from
+  res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT");
+  return res.sendStatus(200);
+  // return res.redirect('/main/homepage')
+})
+router.get('/deleteFriend/:username', deleteUser, (req, res) => {
+  
   res.set("Access-Control-Allow-Origin", '*'); // update to match the domain you will make the request from
   res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT");

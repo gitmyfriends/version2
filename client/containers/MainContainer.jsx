@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ProfileContainer from './ProfileContainer.jsx';
-// import TotalsDisplay from '../components/TotalsDisplay.jsx';
+
 import ProfileAdder from '../components/ProfileAdder.jsx';
 
 import * as actions from '../actions/actions.js';
 
 const mapStateToProps = state => ({
   totalProfiles: state.profiles.totalProfiles,
-  displayCard: state.profiles.displayCard
+  displayCard: state.profiles.displayCard,
+  repoList: state.profiles.repoList,
+  profileList: state.profiles.profileList
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -30,14 +32,15 @@ class MainContainer extends Component {
       .then((array) => this.props.addList(array))
   }
   render() {
-    const {totalProfiles, addProfile, deleteProfile,displayCard,displayProfile} = this.props;
-    console.log(this.props);
+    const {totalProfiles, addProfile, deleteProfile,displayCard,displayProfile,repoList,profileList} = this.props;
+    console.log("is repolist here?",this.props);
     return (
       <div className='mainContainer'>
         <div className='outerBox'>
-          {/* <TotalsDisplay totalProfiles={totalProfiles}/> */}
+          
           <ProfileAdder displayCard={displayCard} displayProfile={displayProfile} addProfile={addProfile}/>
           <ProfileContainer deleteProfile={deleteProfile}/>
+          
         </div>
       </div>
     )

@@ -22,8 +22,16 @@ const userController = {
   
   async createUser(req,res,next){
     const username = req.params.username;
-
     User.create({login: username}, (err, data) =>{
+      if(err) return next(err);
+      console.log(data);
+      return next();
+    })
+  },
+  async deleteUser(req,res,next){
+    console.log("hello from deleteUser",req.params.username)
+    const username = req.params.username;
+    User.deleteOne({login: username}, (err, data) =>{
       if(err) return next(err);
       console.log(data);
       return next();

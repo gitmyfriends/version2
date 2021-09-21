@@ -15,6 +15,7 @@ import * as types from '../actions/constants/actionTypes.js';
 
 const initialState = {
   profileList: [],
+  repoList: [],
   totalProfiles: 0,
   displayCard: null
 }
@@ -26,11 +27,15 @@ const profileReducer = (state = initialState, action) => {
     case types.ADD_PROFILE:{
     console.log("did you get object", action.payload)
     const profileList = state.profileList.slice();
+    const repoList = state.repoList.slice()
+    repoList.push(action.payload.public_repos)
+    console.log("action payload",typeof action.payload.public_repos)
     profileList.push(action.payload);
     const totalProfiles = state.totalProfiles+1;
     let displayCard = state.displayCard;
     displayCard = null;
     return {
+      repoList,
       displayCard,
       profileList, 
       totalProfiles:totalProfiles,
@@ -49,11 +54,8 @@ const profileReducer = (state = initialState, action) => {
     }
     
     case types.DELETE_PROFILE:{
-     
       const profileList = state.profileList.slice();
-      console.log("before splice",action.payload,profileList)
       profileList.splice(action.payload,1)
-      console.log("after Splice",profileList)
       return {
         ...state,
         profileList

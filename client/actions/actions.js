@@ -10,9 +10,9 @@ export const addProfile = (profileObj) => ({
   payload: profileObj
 })
 
-export const deleteProfile = (name) => ({
+export const deleteProfile = (index) => ({
   type: DELETE_PROFILE,
-  payload: name
+  payload: index
 })
 
 export const addList = (array) => ({
